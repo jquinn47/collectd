@@ -395,7 +395,7 @@ pkglib_LTLIBRARIES += dpdkstat.la
 dpdkstat_la_SOURCES = dpdkstat.c
 dpdkstat_la_CFLAGS = $(AM_CFLAGS) $(BUILD_WITH_DPDK_CFLAGS)
 dpdkstat_la_LDFLAGS = $(PLUGIN_LDFLAGS) $(BUILD_WITH_DPDK_LDFLAGS)
-dpdkstat_la_LIBADD = $(BUILD_WITH_DPDK_LIBS) 
+dpdkstat_la_LIBADD = $(BUILD_WITH_DPDK_LIBS)
 endif
 
 if BUILD_PLUGIN_DRBD
@@ -953,6 +953,9 @@ processes_la_LDFLAGS = $(PLUGIN_LDFLAGS)
 processes_la_LIBADD =
 if BUILD_WITH_LIBKVM_GETPROCS
 processes_la_LIBADD += -lkvm
+endif
+if BUILD_WITH_PERFSTAT
+processes_la_LIBADD += -lperfstat
 endif
 endif
 
